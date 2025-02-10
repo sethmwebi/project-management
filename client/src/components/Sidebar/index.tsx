@@ -28,9 +28,8 @@ import React, { useState } from "react";
 const Sidebar = () => {
   const [showProjects, setShowProjects] = useState(true);
   const [showPriority, setShowPriority] = useState(true);
-  const { data: projects } = useGetProjectsQuery()
+  const { data: projects } = useGetProjectsQuery();
   const dispatch = useAppDispatch();
-  
 
   const isSidebarCollapsed = useAppSelector(
     (state) => state.global.isSidebarCollapsed,
@@ -58,7 +57,13 @@ const Sidebar = () => {
         </div>
         {/*Team*/}
         <div className="flex items-center gap-5 border-y-[1.5px] border-gray-200 px-8 py-4 dark:border-gray-700">
-          <Image className="" src="/logo.png" alt="" width={40} height={40} />
+          <Image
+            className=""
+            src="https://pm-s3-seth-images.s3.us-east-1.amazonaws.com/logo.png"
+            alt=""
+            width={40}
+            height={40}
+          />
           <div>
             <h3 className="text-md font-bold tracking-wide dark:text-gray-200">
               SETHMWEBI TEAM
@@ -91,9 +96,15 @@ const Sidebar = () => {
           )}
         </button>
         {/*PROJECTS LIST*/}
-        {showProjects && projects?.map((project) => (
-        <SidebarLink key={project.id} icon={Briefcase} label={project.name} href={`/projects/${project.id}`}/>
-        ))}
+        {showProjects &&
+          projects?.map((project) => (
+            <SidebarLink
+              key={project.id}
+              icon={Briefcase}
+              label={project.name}
+              href={`/projects/${project.id}`}
+            />
+          ))}
 
         {/*PRIORITIES LINKS*/}
         <button
