@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import DashboardWrapper from "./dashboardWrapper";
 import Navbar from "../components/Navbar";
+import AuthProvider from "@/authProvider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,7 +32,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         suppressHydrationWarning
       >
-        <DashboardWrapper>{children}</DashboardWrapper>
+        <AuthProvider>
+          <DashboardWrapper>{children}</DashboardWrapper>
+        </AuthProvider>
       </body>
     </html>
   );
